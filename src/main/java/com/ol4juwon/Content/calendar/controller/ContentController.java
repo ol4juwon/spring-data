@@ -71,4 +71,14 @@ public class ContentController {
         repository.deleteById(id);
 //        repository.deleteContent(id);
     }
+
+    @GetMapping("/filter/{keyword}")
+    public List<Content> findByTitle(@PathVariable String keyword ){
+        return repository.findAllByTitleContainingIgnoreCase(keyword);
+    }
+
+    @GetMapping("/filterbystatus/{status}")
+    public List<Content> listByStatus(@PathVariable Status status){
+        return repository.listByStatus(status);
+    }
 }
